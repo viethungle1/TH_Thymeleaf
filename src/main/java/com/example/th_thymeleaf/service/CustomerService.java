@@ -1,7 +1,5 @@
 package com.example.th_thymeleaf.service;
-
 import com.example.th_thymeleaf.model.Customer;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

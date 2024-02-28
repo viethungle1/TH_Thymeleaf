@@ -33,6 +33,11 @@
     </tr>
     </tbody>
 </table>
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
 <footer th:replace="/layout :: footer"></footer>
 </body>
 </html>

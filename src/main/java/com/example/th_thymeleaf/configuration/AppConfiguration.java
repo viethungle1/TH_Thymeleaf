@@ -1,5 +1,6 @@
 package com.example.th_thymeleaf.configuration;
-
+import com.example.th_thymeleaf.service.CustomerService;
+import com.example.th_thymeleaf.service.ICustomerService;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -12,7 +13,6 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
-
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.example.th_thymeleaf")
@@ -36,19 +36,22 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         templateResolver.setCharacterEncoding("UTF-8");
         return templateResolver;
     }
-
     @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         return templateEngine;
     }
-
     @Bean
     public ThymeleafViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
+    }
+    @Bean
+    public CustomerService createObjCusSv() {
+        ICustomerService customerService = new CustomerService();
+        return (CustomerService) customerService;
     }
 }
